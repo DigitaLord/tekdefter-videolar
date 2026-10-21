@@ -1,5 +1,12 @@
 # tekdefter-videolar
 
+<!-- KUNYE:BASLA -->
+> **Ne:** TekDefter "Nasıl kullanılır" videolarının 4 biçimde izlendiği herkese açık yayın sayfası.
+> **Üstü:** `mtbr-codex-workspace/inventory/projects.yaml` (katalog id: `tekdefter-videolar`) · `OBSD-KASA/10-projects/tekdefter/tekdefter.md` (durum) · `WORKSPACE.md` (dizin sözleşmesi)
+> **Altı:** `index.html`, `v/` (mp4 + kapak)
+> **Güncelleme:** 2026-10-21
+<!-- KUNYE:BITIR -->
+
 ## Amaç
 TekDefter "Nasıl kullanılır" videolarının (9 video × 4 biçim) tarayıcıdan izlenebilir
 herkese açık yayın sayfası. Üretim burada yapılmaz; dosyalar asıl üretim hattından
