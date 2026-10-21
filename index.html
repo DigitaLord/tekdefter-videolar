@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TekDefter · Nasıl kullanılır videoları</title>
+<meta name="robots" content="noindex">
+<style>
+  :root{
+    --kagit:#ECEEE8; --fis:#FAFAF6; --murekkep:#15171C; --karbon:#2238C4; --marj:#D3412F; --soluk:#5d6472;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--kagit);color:var(--murekkep);
+       font-family:"Schibsted Grotesk",Inter,system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+  header{max-width:1240px;margin:0 auto;padding:40px 28px 12px;border-bottom:1px solid rgba(21,23,28,.14)}
+  .ust{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+  .marka{font-weight:700;letter-spacing:.02em;font-size:15px;color:var(--karbon);text-transform:uppercase}
+  .cizgi{flex:1;height:1px;background:rgba(21,23,28,.14)}
+  h1{font-family:Newsreader,Georgia,"Times New Roman",serif;font-weight:500;font-size:clamp(28px,4vw,44px);
+     line-height:1.1;margin:18px 0 8px;letter-spacing:-.01em}
+  header p{margin:0;color:var(--soluk);font-size:15px;max-width:62ch}
+  nav{display:flex;gap:6px;flex-wrap:wrap;margin:22px 0 0;padding-bottom:18px}
+  nav button{border:1px solid rgba(21,23,28,.22);background:transparent;color:var(--murekkep);
+             border-radius:999px;padding:7px 15px;font:inherit;font-size:13.5px;cursor:pointer;transition:.15s}
+  nav button:hover{border-color:var(--karbon);color:var(--karbon)}
+  nav button.on{background:var(--karbon);border-color:var(--karbon);color:#fff}
+  main{max-width:1240px;margin:0 auto;padding:26px 28px 64px}
+  .izgara{display:grid;gap:22px;grid-template-columns:repeat(auto-fill,minmax(370px,1fr))}
+  article{background:var(--fis);border-radius:4px;padding:16px 16px 14px;
+          box-shadow:0 1px 0 rgba(21,23,28,.10),0 10px 24px -18px rgba(21,23,28,.45)}
+  .no{font-family:Newsreader,Georgia,serif;font-size:13px;color:var(--marj);letter-spacing:.08em}
+  article h2{font-size:16px;font-weight:600;margin:2px 0 12px;line-height:1.35}
+  video{width:100%;border-radius:3px;background:#000;display:block}
+  .dikey{grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
+  .dikey video{max-height:560px;object-fit:contain}
+  .alt{display:flex;justify-content:space-between;align-items:center;margin-top:9px;
+       font-size:12px;color:var(--soluk);gap:10px}
+  .alt a{color:var(--karbon);text-decoration:none;white-space:nowrap}
+  .alt a:hover{text-decoration:underline}
+  footer{max-width:1240px;margin:0 auto;padding:0 28px 56px;color:var(--soluk);font-size:12.5px}
+</style>
+</head>
+<body>
+<header>
+  <div class="ust"><span class="marka">TekDefter</span><span class="cizgi"></span><span class="marka" style="color:var(--soluk)">Nasıl kullanılır · 9 video</span></div>
+  <h1>Nasıl kullanılır videoları</h1>
+  <p>Gerçek uygulama ekranında adım adım kayıt. Aşağıdan biçim seçin; her video sayfa içinde oynar.</p>
+  <nav id="bicim">
+    <button data-f="16x9" class="on">Yatay · sesli</button>
+    <button data-f="9x16">Dikey · sesli</button>
+    <button data-f="9x16-sessiz">Dikey · sessiz altyazılı</button>
+    <button data-f="9x16-reels">Reels kesiti</button>
+  </nav>
+</header>
+<main><div class="izgara" id="liste"></div></main>
+<footer>TekDefter - Online Ortak Cari · Örnek veriler kurgusaldır.</footer>
+<script>
+const videolar = [
+  ["01-islem-onay", "İşlem girme ve karşı tarafın onayı", "69 sn · reels 30 sn"],
+  ["02-hesap-ilk-defter", "Hesap açma ve ilk ortak defter", "58 sn · reels 29 sn"],
+  ["03-davet", "Karşı tarafı davet etmek", "59 sn · reels 28 sn"],
+  ["04-ret-duzeltme", "Gerekçeyle ret ve düzeltilmiş kayıt", "67 sn · reels 31 sn"],
+  ["05-gecici-ortak", "Geçici defterden ortak deftere", "57 sn · reels 29 sn"],
+  ["06-rapor-paylasim", "Rapor, PDF ve süreli paylaşım linki", "51 sn · reels 23 sn"],
+  ["07-yetkili-isletme", "Çoklu işletme ve yetkili daveti", "61 sn · reels 26 sn"],
+  ["08-bildirim-mobil", "Bildirimler ve telefonda kullanım", "47 sn · reels 26 sn"],
+  ["09-paketler-destek", "Paketler ve destek asistanı", "60 sn · reels 28 sn"]
+];
+const liste = document.getElementById("liste");
+function goster(f) {
+  liste.className = f === "16x9" ? "izgara" : "izgara dikey";
+  liste.innerHTML = videolar.map(([id, ad, sure]) => {
+    const yol = `v/${id}-${f}.mp4`;
+    return `<article><div class="no">${id.slice(0,2)}</div><h2>${ad}</h2>
+      <video controls preload="none" playsinline poster="v/${id}-kapak.jpg" src="${yol}"></video>
+      <div class="alt"><span>${sure}</span><a href="${yol}" download>indir</a></div></article>`;
+  }).join("");
+}
+document.getElementById("bicim").addEventListener("click", (e) => {
+  const b = e.target.closest("button"); if (!b) return;
+  document.querySelectorAll("#bicim button").forEach((x) => x.classList.toggle("on", x === b));
+  goster(b.dataset.f);
+});
+goster("16x9");
+</script>
+</body>
+</html>
