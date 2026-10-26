@@ -1,0 +1,104 @@
+{
+ "r2": [
+  {
+   "ad": "Onay Hattı",
+   "yol": "v/r2-A-16x9.mp4",
+   "kapak": "v/r2-A-16x9-kapak.jpg",
+   "sure": "0:38",
+   "dikey": false
+  },
+  {
+   "ad": "Onay Hattı",
+   "yol": "v/r2-A-9x16.mp4",
+   "kapak": "v/r2-A-9x16-kapak.jpg",
+   "sure": "0:27",
+   "dikey": true
+  },
+  {
+   "ad": "Tek Cümle, Tek Ekran",
+   "yol": "v/r2-B-16x9.mp4",
+   "kapak": "v/r2-B-16x9-kapak.jpg",
+   "sure": "0:41",
+   "dikey": false
+  },
+  {
+   "ad": "Tek Cümle, Tek Ekran",
+   "yol": "v/r2-B-9x16.mp4",
+   "kapak": "v/r2-B-9x16-kapak.jpg",
+   "sure": "0:29",
+   "dikey": true
+  },
+  {
+   "ad": "Kamera Turu",
+   "yol": "v/r2-C-16x9.mp4",
+   "kapak": "v/r2-C-16x9-kapak.jpg",
+   "sure": "0:39",
+   "dikey": false
+  },
+  {
+   "ad": "Kamera Turu",
+   "yol": "v/r2-C-9x16.mp4",
+   "kapak": "v/r2-C-9x16-kapak.jpg",
+   "sure": "0:28",
+   "dikey": true
+  },
+  {
+   "ad": "Önce / Sonra",
+   "yol": "v/r2-D-16x9.mp4",
+   "kapak": "v/r2-D-16x9-kapak.jpg",
+   "sure": "0:36",
+   "dikey": false
+  },
+  {
+   "ad": "Önce / Sonra",
+   "yol": "v/r2-D-9x16.mp4",
+   "kapak": "v/r2-D-9x16-kapak.jpg",
+   "sure": "0:26",
+   "dikey": true
+  },
+  {
+   "ad": "Adım Kartları",
+   "yol": "v/r2-E-16x9.mp4",
+   "kapak": "v/r2-E-16x9-kapak.jpg",
+   "sure": "1:05",
+   "dikey": false
+  },
+  {
+   "ad": "Adım Kartları",
+   "yol": "v/r2-E-9x16.mp4",
+   "kapak": "v/r2-E-9x16-kapak.jpg",
+   "sure": "0:45",
+   "dikey": true
+  }
+ ],
+ "br": [
+  {
+   "ad": "UGC reklam: Fırınla hesap",
+   "yol": "v/br-01-ugc-9x16.mp4",
+   "kapak": "v/br-01-ugc-9x16-kapak.jpg",
+   "sure": "0:23",
+   "dikey": true
+  },
+  {
+   "ad": "Nasıl yapılır 01: İşlem girme ve onay",
+   "yol": "v/br-02-islem-onay-16x9.mp4",
+   "kapak": "v/br-02-islem-onay-16x9-kapak.jpg",
+   "sure": "1:10",
+   "dikey": false
+  },
+  {
+   "ad": "Nasıl yapılır 01: İşlem girme ve onay",
+   "yol": "v/br-02-islem-onay-9x16.mp4",
+   "kapak": "v/br-02-islem-onay-9x16-kapak.jpg",
+   "sure": "1:10",
+   "dikey": true
+  },
+  {
+   "ad": "Teaser",
+   "yol": "v/br-03-teaser-9x16.mp4",
+   "kapak": "v/br-03-teaser-9x16-kapak.jpg",
+   "sure": "0:11",
+   "dikey": true
+  }
+ ]
+}

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>TekDefter · Nasıl kullanılır videoları</title>
+<title>TekDefter · Tanıtım videoları</title>
 <meta name="robots" content="noindex">
 <style>
   :root{
@@ -26,62 +26,121 @@
   nav button.on{background:var(--karbon);border-color:var(--karbon);color:#fff}
   main{max-width:1240px;margin:0 auto;padding:26px 28px 64px}
   .izgara{display:grid;gap:22px;grid-template-columns:repeat(auto-fill,minmax(370px,1fr))}
+  .izgara.dikey{grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
   article{background:var(--fis);border-radius:4px;padding:16px 16px 14px;
           box-shadow:0 1px 0 rgba(21,23,28,.10),0 10px 24px -18px rgba(21,23,28,.45)}
   .no{font-family:Newsreader,Georgia,serif;font-size:13px;color:var(--marj);letter-spacing:.08em}
   article h2{font-size:16px;font-weight:600;margin:2px 0 12px;line-height:1.35}
   video{width:100%;border-radius:3px;background:#000;display:block}
-  .dikey{grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
   .dikey video{max-height:560px;object-fit:contain}
   .alt{display:flex;justify-content:space-between;align-items:center;margin-top:9px;
        font-size:12px;color:var(--soluk);gap:10px}
   .alt a{color:var(--karbon);text-decoration:none;white-space:nowrap}
   .alt a:hover{text-decoration:underline}
+  #bicim{display:none}
+  #bicim.gorunur{display:flex}
   footer{max-width:1240px;margin:0 auto;padding:0 28px 56px;color:var(--soluk);font-size:12.5px}
 </style>
 </head>
 <body>
 <header>
-  <div class="ust"><span class="marka">TekDefter</span><span class="cizgi"></span><span class="marka" style="color:var(--soluk)">Nasıl kullanılır · 9 video</span></div>
-  <h1>Nasıl kullanılır videoları</h1>
-  <p>Gerçek uygulama ekranında adım adım kayıt. Aşağıdan biçim seçin; her video sayfa içinde oynar.</p>
-  <nav id="bicim">
-    <button data-f="16x9" class="on">Yatay · sesli</button>
-    <button data-f="9x16">Dikey · sesli</button>
-    <button data-f="9x16-sessiz">Dikey · sessiz altyazılı</button>
-    <button data-f="9x16-reels">Reels kesiti</button>
+  <div class="ust"><span class="marka">TekDefter</span><span class="cizgi"></span><span class="marka" style="color:var(--soluk)" id="ustbilgi"></span></div>
+  <h1>Tanıtım videoları</h1>
+  <p id="aciklama"></p>
+  <nav id="bolum">
+    <button data-b="r2" class="on">Revize 2 · sunum alternatifleri</button>
+    <button data-b="br">UGC + tanıtım</button>
+    <button data-b="nasil">Nasıl kullanılır</button>
   </nav>
+  <nav id="bicim"></nav>
 </header>
 <main><div class="izgara" id="liste"></div></main>
 <footer>TekDefter - Online Ortak Cari · Örnek veriler kurgusaldır.</footer>
 <script>
-const videolar = [
-  ["01-islem-onay", "İşlem girme ve karşı tarafın onayı", "69 sn · reels 30 sn"],
-  ["02-hesap-ilk-defter", "Hesap açma ve ilk ortak defter", "58 sn · reels 29 sn"],
-  ["03-davet", "Karşı tarafı davet etmek", "59 sn · reels 28 sn"],
-  ["04-ret-duzeltme", "Gerekçeyle ret ve düzeltilmiş kayıt", "67 sn · reels 31 sn"],
-  ["05-gecici-ortak", "Geçici defterden ortak deftere", "57 sn · reels 29 sn"],
-  ["06-rapor-paylasim", "Rapor, PDF ve süreli paylaşım linki", "51 sn · reels 23 sn"],
-  ["07-yetkili-isletme", "Çoklu işletme ve yetkili daveti", "61 sn · reels 26 sn"],
-  ["08-bildirim-mobil", "Bildirimler ve telefonda kullanım", "47 sn · reels 26 sn"],
-  ["09-paketler-destek", "Paketler ve destek asistanı", "60 sn · reels 28 sn"]
-];
+const YENI = {"r2": [{"ad": "Onay Hattı", "yol": "v/r2-A-16x9.mp4", "kapak": "v/r2-A-16x9-kapak.jpg", "sure": "0:38", "dikey": false}, {"ad": "Onay Hattı", "yol": "v/r2-A-9x16.mp4", "kapak": "v/r2-A-9x16-kapak.jpg", "sure": "0:27", "dikey": true}, {"ad": "Tek Cümle, Tek Ekran", "yol": "v/r2-B-16x9.mp4", "kapak": "v/r2-B-16x9-kapak.jpg", "sure": "0:41", "dikey": false}, {"ad": "Tek Cümle, Tek Ekran", "yol": "v/r2-B-9x16.mp4", "kapak": "v/r2-B-9x16-kapak.jpg", "sure": "0:29", "dikey": true}, {"ad": "Kamera Turu", "yol": "v/r2-C-16x9.mp4", "kapak": "v/r2-C-16x9-kapak.jpg", "sure": "0:39", "dikey": false}, {"ad": "Kamera Turu", "yol": "v/r2-C-9x16.mp4", "kapak": "v/r2-C-9x16-kapak.jpg", "sure": "0:28", "dikey": true}, {"ad": "Önce / Sonra", "yol": "v/r2-D-16x9.mp4", "kapak": "v/r2-D-16x9-kapak.jpg", "sure": "0:36", "dikey": false}, {"ad": "Önce / Sonra", "yol": "v/r2-D-9x16.mp4", "kapak": "v/r2-D-9x16-kapak.jpg", "sure": "0:26", "dikey": true}, {"ad": "Adım Kartları", "yol": "v/r2-E-16x9.mp4", "kapak": "v/r2-E-16x9-kapak.jpg", "sure": "1:05", "dikey": false}, {"ad": "Adım Kartları", "yol": "v/r2-E-9x16.mp4", "kapak": "v/r2-E-9x16-kapak.jpg", "sure": "0:45", "dikey": true}], "br": [{"ad": "UGC reklam: Fırınla hesap", "yol": "v/br-01-ugc-9x16.mp4", "kapak": "v/br-01-ugc-9x16-kapak.jpg", "sure": "0:23", "dikey": true}, {"ad": "Nasıl yapılır 01: İşlem girme ve onay", "yol": "v/br-02-islem-onay-16x9.mp4", "kapak": "v/br-02-islem-onay-16x9-kapak.jpg", "sure": "1:10", "dikey": false}, {"ad": "Nasıl yapılır 01: İşlem girme ve onay", "yol": "v/br-02-islem-onay-9x16.mp4", "kapak": "v/br-02-islem-onay-9x16-kapak.jpg", "sure": "1:10", "dikey": true}, {"ad": "Teaser", "yol": "v/br-03-teaser-9x16.mp4", "kapak": "v/br-03-teaser-9x16-kapak.jpg", "sure": "0:11", "dikey": true}]};
+const YT = {"r2-A-16x9": "6Po7uBYuDAg", "r2-A-9x16": "HDoLM7tsAs0", "r2-B-16x9": "1fqO-9muJxw", "r2-B-9x16": "aiJI48NbkEQ", "r2-C-16x9": "_weap4vzBh4", "r2-C-9x16": "FBmDbBtiVeI", "r2-D-16x9": "H5lQVh_ik-g", "r2-D-9x16": "c1wsycBbbeU", "r2-E-16x9": "_-SgFFWCu7M", "r2-E-9x16": "6OaWjFRFdUY", "br-01-ugc-9x16": "_Cq4sPK6xxc", "br-02-islem-onay-16x9": "YdcRjKLVVIg"};
+const ESKI = [["01-islem-onay", "İşlem girme ve karşı tarafın onayı", "69 sn · reels 30 sn"], ["02-hesap-ilk-defter", "Hesap açma ve ilk ortak defter", "58 sn · reels 29 sn"], ["03-davet", "Karşı tarafı davet etmek", "59 sn · reels 28 sn"], ["04-ret-duzeltme", "Gerekçeyle ret ve düzeltilmiş kayıt", "67 sn · reels 31 sn"], ["05-gecici-ortak", "Geçici defterden ortak deftere", "57 sn · reels 29 sn"], ["06-rapor-paylasim", "Rapor, PDF ve süreli paylaşım linki", "51 sn · reels 23 sn"], ["07-yetkili-isletme", "Çoklu işletme ve yetkili daveti", "61 sn · reels 26 sn"], ["08-bildirim-mobil", "Bildirimler ve telefonda kullanım", "47 sn · reels 26 sn"], ["09-paketler-destek", "Paketler ve destek asistanı", "60 sn · reels 28 sn"]];
 const liste = document.getElementById("liste");
-function goster(f) {
+const bicimNav = document.getElementById("bicim");
+const aciklama = document.getElementById("aciklama");
+const ustbilgi = document.getElementById("ustbilgi");
+
+const BOLUM_ACIKLAMA = {
+  r2: "Beş ayrı sunum mantığı, yatay ve dikey. Aynı içerik, farklı anlatım.",
+  br: "UGC reklam, kısa teaser ve nasıl yapılır videosu.",
+  nasil: "Gerçek uygulama ekranında adım adım kayıt. Aşağıdan biçim seçin."
+};
+
+const NASIL_BICIM = [
+  ["16x9", "Yatay · sesli"], ["9x16", "Dikey · sesli"],
+  ["9x16-sessiz", "Dikey · sessiz altyazılı"], ["9x16-reels", "Reels kesiti"]
+];
+
+function kartYeni(k, i) {
+  const parca = k.yol.split("/").pop().split("-");
+  const harf = parca[1] || String(i + 1);
+  const yt = YT[k.yol.replace("v/", "").replace(".mp4", "")];
+  return `<article><div class="no">${harf}</div><h2>${k.ad}</h2>
+    <video controls preload="none" playsinline poster="${k.kapak}" src="${k.yol}"></video>
+    <div class="alt"><span>${k.sure}</span>
+      <span><a href="${k.yol}" download>indir</a>${yt ? ` · <a href="https://youtu.be/${yt}" target="_blank" rel="noopener">YouTube</a>` : ""}</span>
+    </div></article>`;
+}
+
+function bicimleriKur(b) {
+  let secenekler = NASIL_BICIM;
+  if (b === "r2" || b === "br") {
+    const yatay = (YENI[b] || []).filter((x) => !x.dikey).length;
+    const dikey = (YENI[b] || []).filter((x) => x.dikey).length;
+    secenekler = [];
+    if (yatay) secenekler.push(["yatay", `Yatay · ${yatay}`]);
+    if (dikey) secenekler.push(["dikey", `Dikey · ${dikey}`]);
+  }
+  bicimNav.innerHTML = secenekler
+    .map(([f, ad], i) => `<button data-f="${f}"${i === 0 ? ' class="on"' : ""}>${ad}</button>`).join("");
+  bicimNav.classList.add("gorunur");
+  return secenekler.length ? secenekler[0][0] : null;
+}
+
+function gosterYeni(b, f) {
+  const hepsi = YENI[b] || [];
+  const k = hepsi.filter((x) => (f === "dikey" ? x.dikey : !x.dikey));
+  liste.className = f === "dikey" ? "izgara dikey" : "izgara";
+  liste.innerHTML = k.map(kartYeni).join("");
+  aciklama.textContent = BOLUM_ACIKLAMA[b];
+  ustbilgi.textContent = hepsi.length + " video";
+}
+
+function gosterNasil(f) {
   liste.className = f === "16x9" ? "izgara" : "izgara dikey";
-  liste.innerHTML = videolar.map(([id, ad, sure]) => {
+  liste.innerHTML = ESKI.map(([id, ad, sure]) => {
     const yol = `v/${id}-${f}.mp4`;
-    return `<article><div class="no">${id.slice(0,2)}</div><h2>${ad}</h2>
+    return `<article><div class="no">${id.slice(0, 2)}</div><h2>${ad}</h2>
       <video controls preload="none" playsinline poster="v/${id}-kapak.jpg" src="${yol}"></video>
       <div class="alt"><span>${sure}</span><a href="${yol}" download>indir</a></div></article>`;
   }).join("");
+  aciklama.textContent = BOLUM_ACIKLAMA.nasil;
+  ustbilgi.textContent = ESKI.length + " video";
 }
-document.getElementById("bicim").addEventListener("click", (e) => {
+
+function bolumCiz(b) {
+  const ilk = bicimleriKur(b);
+  if (b === "nasil") gosterNasil(ilk || "16x9");
+  else gosterYeni(b, ilk || "yatay");
+}
+
+document.getElementById("bolum").addEventListener("click", (e) => {
+  const b = e.target.closest("button"); if (!b) return;
+  document.querySelectorAll("#bolum button").forEach((x) => x.classList.toggle("on", x === b));
+  bolumCiz(b.dataset.b);
+});
+bicimNav.addEventListener("click", (e) => {
   const b = e.target.closest("button"); if (!b) return;
   document.querySelectorAll("#bicim button").forEach((x) => x.classList.toggle("on", x === b));
-  goster(b.dataset.f);
+  const aktif = document.querySelector("#bolum button.on").dataset.b;
+  if (aktif === "nasil") gosterNasil(b.dataset.f); else gosterYeni(aktif, b.dataset.f);
 });
-goster("16x9");
+bolumCiz("r2");
 </script>
 </body>
 </html>
